@@ -3,6 +3,22 @@
  */
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {Button} from 'antd-mobile'
+import {HashRouter, Switch, Route} from 'react-router-dom'
+import {Provider} from 'react-redux'
 
-ReactDOM.render(<Button type="primary">Test</Button>, document.getElementById('root'))
+import store from './redux/store'
+import Rigister from './containers/register/register'
+import Login from './containers/login/login'
+import Main from './containers/main/main'
+
+ReactDOM.render((
+  <Provider store={store}>
+    <HashRouter>
+      <Switch>
+        <Route path="/register" component={Rigister}/>
+        <Route path="/login" component={Login}/>
+        <Route component={Main}></Route> {/*默认路由*/}
+      </Switch>
+    </HashRouter>
+  </Provider>
+), document.getElementById('root'))

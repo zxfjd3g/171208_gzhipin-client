@@ -39,16 +39,33 @@
         redux/react-redux/redux-thunk
         redux: createStore()/combineReducers()/applyMiddleware()
         react-redux: <Provider store={store}> / connect()(Xxx)
-        4个重要模块: reducers/store/action-types/actions
+        4个重要模块: reducers/store/actions/action-types
 
 ## 4. 登陆/注册界面
-    1). 创建3个1级路由: dashboard/login/register
+    1). 创建3个1级路由: main/login/register
     2). 完成登陆/注册的静态组件
         antd组件: NavBar/WingBlank/WhiteSpace/List/InputItem/Radio/Button
         路由跳转: this.props.history.replace('/login')
+        收集表单输入数据: state/onChange/变量属性名
 
 ## 5. 实现简单后台
     1). 使用webstorm创建基于node+express的后台应用
     2). 根据需求编写后台路由
     3). 使用postman测试后台接口
     4). 使用nodemon实现后台应用的自动重启动
+    5). 路由回调函数的3步: 读取请求参数/处理/返回响应数据
+    
+    
+# day02
+## 1. 使用mongoose操作数据库
+
+## 2. 注册/登陆后台处理
+    路由
+    数据库操作
+    
+## 3. 注册/登陆前台处理
+    ajax
+    redux
+    component
+
+## 4. 实现user信息完善功能

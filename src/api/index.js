@@ -11,3 +11,5 @@ export const reqRegister = (user) => ajax('/register', user, 'POST')
 export const reqLogin = ({username, password}) => ajax('/login',{username, password}, 'POST')
 // 更新用户接口
 export const reqUpdateUser = (user) => ajax('/update', user, 'POST')
+// 获取用户信息
+export const reqUser = () => ajax('/user')

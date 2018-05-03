@@ -25,6 +25,7 @@ class DashenInfo extends Component {
   }
 
   handleChange = (name, value) => {
+    // debugger
     this.setState({
       [name]: value
     })

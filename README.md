@@ -106,9 +106,9 @@
 ## 1. 实现user信息完善功能
     1). 用户信息完善界面路由组件: 
         组件: dashen-info/laoban-info/header-selector
-        界面
-        收集用户输入数据
-        注册2级路由
+        界面: Navbar/List/Grid/InputItem/Button/TextareaItem
+        收集用户输入数据: onChange监听/state 
+        注册2级路由: 在main路由组件
     2). 登陆/注册成功后的跳转路由计算
         定义工具函数
         计算逻辑分析
@@ -129,7 +129,7 @@
         前台读取cookie中的userid
         redux中管理user信息状态
         
-    1). 实现自动登陆
+    2). 实现自动登陆
         整体逻辑分析
         ajax请求根据cookie中的userid查询获取对应的user信息
 

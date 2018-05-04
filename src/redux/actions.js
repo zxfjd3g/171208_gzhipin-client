@@ -127,3 +127,10 @@ export const getUserList = (type) => {
     }
   }
 }
+
+// 发送消息的异步action
+export const sendMsg = ({from, to, content}) => {
+  return dispatch => {
+    console.log('发送消息', {from, to, content})
+  }
+}

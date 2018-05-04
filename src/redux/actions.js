@@ -3,6 +3,7 @@
 异步action
 同步action
  */
+import io from 'socket.io-client'
 import {
   AUTH_SUCCESS,
   ERROR_MSG,
@@ -17,6 +18,37 @@ import {
   reqUser,
   reqUserList
 } from '../api'
+
+/*
+单例对象
+1. 创建对象之前: 判断对象是否已经存在, 只有不存在才去创建
+2. 创建对象之后: 保存对象
+ */
+
+function initIO() {
+  // 1. 创建对象之前: 判断对象是否已经存在, 只有不存在才去创建
+  if(!io.socket) {
+    // 连接服务器, 得到与服务器的连接对象
+    io.socket = io('ws://localhost:4000')  // 2. 创建对象之后: 保存对象
+    // 绑定监听, 接收服务器发送的消息
+    io.socket.on('receiveMsg', function (chatMsg) {
+      console.log('客户端接收服务器发送的消息', chatMsg)
+    })
+
+  }
+}
+
+// 发送消息的异步action
+export const sendMsg = ({from, to, content}) => {
+  return dispatch => {
+    console.log('客户端向服务器发送消息', {from, to, content})
+    initIO()
+    // 发消息
+    io.socket.emit('sendMsg', {from, to, content})
+  }
+}
+
+
 
 // 授权成功的同步action
 const authSuccess = (user) => ({type: AUTH_SUCCESS, data: user})
@@ -128,9 +160,3 @@ export const getUserList = (type) => {
   }
 }
 
-// 发送消息的异步action
-export const sendMsg = ({from, to, content}) => {
-  return dispatch => {
-    console.log('发送消息', {from, to, content})
-  }
-}

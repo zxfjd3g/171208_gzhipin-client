@@ -5,7 +5,7 @@
 import React, {Component} from 'react'
 import {NavBar, List, InputItem, Grid, Icon} from 'antd-mobile'
 import {connect} from 'react-redux'
-import {sendMsg} from '../../redux/actions'
+import {sendMsg, readMsg} from '../../redux/actions'
 
 
 const Item = List.Item
@@ -30,11 +30,19 @@ class Chat extends Component {
   componentDidMount() {
     // 初始显示列表
     window.scrollTo(0, document.body.scrollHeight)
+
   }
 
   componentDidUpdate () {
     // 更新显示列表
     window.scrollTo(0, document.body.scrollHeight)
+  }
+
+  componentWillUnmount () { // 在退出之前
+    // 发请求更新消息的未读状态
+    const from = this.props.match.params.userid
+    const to = this.props.user._id
+    this.props.readMsg(from, to)
   }
 
   toggleShow = () => {
@@ -151,5 +159,5 @@ class Chat extends Component {
 
 export default connect(
   state => ({user: state.user, chat: state.chat}),
-  {sendMsg}
+  {sendMsg, readMsg}
 )(Chat)

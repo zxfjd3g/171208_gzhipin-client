@@ -3,8 +3,10 @@
 函数的返回值是promise对象
  */
 import axios from 'axios'
-
+const baseUrl = ''
+// const baseUrl = 'http://localhost:4000'
 export default function ajax(url, data={}, type='GET') {
+  url = baseUrl + url
   if(type==='GET') { // 发送GET请求
     // 拼请求参数串
     // data: {username: tom, password: 123}
